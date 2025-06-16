@@ -1,0 +1,940 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUXE | Premium Event & Brand Activation Agency</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#D4AF37',
+                        secondary: '#333333',
+                        light: '#F8F8F8',
+                    },
+                    fontFamily: {
+                        heading: ['Playfair Display', 'serif'],
+                        body: ['Poppins', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 1s ease-in-out',
+                        'slide-up': 'slideUp 0.8s ease-out',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(30px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hero-bg {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        .portfolio-overlay {
+            transition: all 0.4s ease;
+            background: rgba(212, 175, 55, 0.9);
+        }
+        
+        .testimonial-card {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .nav-link::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background: #D4AF37;
+            transition: width 0.3s;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .active::after {
+            width: 100%;
+        }
+        
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 3px #999;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-float:hover {
+            background-color: #128C7E;
+            transform: scale(1.1);
+        }
+        
+        @media (max-width: 768px) {
+            .hero-bg {
+                background-position: 70% center;
+            }
+            
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+                bottom: 30px;
+                right: 30px;
+            }
+        }
+    </style>
+</head>
+<body class="font-body text-secondary bg-light">
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/1234567890" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex-shrink-0 flex items-center">
+                    <span class="font-heading text-2xl font-bold text-primary">LUXE</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-center space-x-8">
+                        <a href="#home" class="nav-link px-3 py-2 text-sm font-medium text-secondary hover:text-primary transition">Home</a>
+                        <a href="#services" class="nav-link px-3 py-2 text-sm font-medium text-secondary hover:text-primary transition">Services</a>
+                        <a href="#portfolio" class="nav-link px-3 py-2 text-sm font-medium text-secondary hover:text-primary transition">Portfolio</a>
+                        <a href="#testimonials" class="nav-link px-3 py-2 text-sm font-medium text-secondary hover:text-primary transition">Testimonials</a>
+                        <a href="#contact" class="nav-link px-3 py-2 text-sm font-medium text-secondary hover:text-primary transition">Contact</a>
+                        <a href="#contact" class="bg-primary hover:bg-opacity-90 text-white px-6 py-2 rounded-full text-sm font-medium transition">Book Now</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-secondary hover:text-primary focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="block px-3 py-2 text-base font-medium text-secondary hover:text-primary">Home</a>
+                <a href="#services" class="block px-3 py-2 text-base font-medium text-secondary hover:text-primary">Services</a>
+                <a href="#portfolio" class="block px-3 py-2 text-base font-medium text-secondary hover:text-primary">Portfolio</a>
+                <a href="#testimonials" class="block px-3 py-2 text-base font-medium text-secondary hover:text-primary">Testimonials</a>
+                <a href="#contact" class="block px-3 py-2 text-base font-medium text-secondary hover:text-primary">Contact</a>
+                <a href="#contact" class="block w-full text-center bg-primary text-white px-6 py-2 rounded-full text-base font-medium mt-2">Book Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg h-screen flex items-center justify-center text-white pt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center animate-fade-in">
+            <h1 class="font-heading text-4xl md:text-6xl font-bold mb-6 animate-slide-up">Crafting Unforgettable Experiences</h1>
+            <p class="text-xl md:text-2xl mb-10 max-w-3xl mx-auto animate-slide-up">We design and execute premium events and brand activations that create lasting impressions.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4 animate-slide-up">
+                <a href="#services" class="bg-primary hover:bg-opacity-90 text-white px-8 py-3 rounded-full text-lg font-medium transition">Explore Services</a>
+                <a href="#portfolio" class="bg-transparent border-2 border-white hover:bg-white hover:bg-opacity-10 text-white px-8 py-3 rounded-full text-lg font-medium transition">View Portfolio</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
+                <div class="mb-12 lg:mb-0">
+                    <h2 class="font-heading text-3xl md:text-4xl font-bold mb-6">About LUXE Agency</h2>
+                    <p class="text-lg mb-6">Founded in 2010, LUXE has established itself as a premier event and brand activation agency, specializing in creating bespoke experiences that resonate with audiences and leave lasting impressions.</p>
+                    <p class="text-lg mb-8">Our team of creative professionals, event planners, and production experts work collaboratively to bring your vision to life, whether it's an intimate wedding or a large-scale corporate activation.</p>
+                    <div class="flex flex-wrap gap-4">
+                        <div class="flex items-center">
+                            <div class="bg-primary bg-opacity-10 p-3 rounded-full mr-4">
+                                <i class="fas fa-check-circle text-primary text-xl"></i>
+                            </div>
+                            <span class="font-medium">500+ Successful Events</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="bg-primary bg-opacity-10 p-3 rounded-full mr-4">
+                                <i class="fas fa-check-circle text-primary text-xl"></i>
+                            </div>
+                            <span class="font-medium">50+ Brand Partners</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="relative overflow-hidden rounded-lg h-64">
+                        <img src="https://images.unsplash.com/photo-1555244162-803834f70033?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Wedding planning" class="w-full h-full object-cover">
+                    </div>
+                    <div class="relative overflow-hidden rounded-lg h-64">
+                        <img src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Corporate event" class="w-full h-full object-cover">
+                    </div>
+                    <div class="relative overflow-hidden rounded-lg h-64">
+                        <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Brand activation" class="w-full h-full object-cover">
+                    </div>
+                    <div class="relative overflow-hidden rounded-lg h-64">
+                        <img src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Promotional event" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-heading text-3xl md:text-4xl font-bold mb-4">Our Premium Services</h2>
+                <p class="text-lg max-w-2xl mx-auto">We offer comprehensive event solutions tailored to your unique needs and vision.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition">
+                    <div class="bg-primary bg-opacity-10 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-ring text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="font-heading text-xl font-bold mb-3">Wedding Planning</h3>
+                    <p class="mb-6">From intimate ceremonies to grand celebrations, we handle every detail to create your perfect day.</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-2"></i>
+                            <span>Full-service coordination</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-2"></i>
+                            <span>Vendor management</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-2"></i>
+                            <span>Custom design & decor</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="text-primary font-medium hover:underline">Learn more →</a>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition">
+                    <div class="bg-primary bg-opacity-10 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-briefcase text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="font-heading text-xl font-bold mb-3">Corporate Events</h3>
+                    <p class="mb-6">Professional events that strengthen your brand and engage your audience effectively.</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-2"></i>
+                            <span>Conferences & seminars</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-2"></i>
+                            <span>Product launches</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-2"></i>
+                            <span>Team building activities</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="text-primary font-medium hover:underline">Learn more →</a>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition">
+                    <div class="bg-primary bg-opacity-10 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-bullhorn text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="font-heading text-xl font-bold mb-3">Brand Activations</h3>
+                    <p class="mb-6">Creative campaigns that bring your brand to life and create meaningful connections.</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-2"></i>
+                            <span>Pop-up experiences</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-2"></i>
+                            <span>Influencer collaborations</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-2"></i>
+                            <span>Interactive installations</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="text-primary font-medium hover:underline">Learn more →</a>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition">
+                    <div class="bg-primary bg-opacity-10 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-calendar-star text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="font-heading text-xl font-bold mb-3">Social Events</h3>
+                    <p class="mb-6">Memorable gatherings that celebrate special occasions in style.</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-2"></i>
+                            <span>Birthday celebrations</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-2"></i>
+                            <span>Anniversary parties</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-2"></i>
+                            <span>Milestone events</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="text-primary font-medium hover:underline">Learn more →</a>
+                </div>
+                
+                <!-- Service 5 -->
+                <div class="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition">
+                    <div class="bg-primary bg-opacity-10 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-ad text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="font-heading text-xl font-bold mb-3">Promotional Campaigns</h3>
+                    <p class="mb-6">Strategic marketing initiatives that boost visibility and engagement.</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-2"></i>
+                            <span>Retail promotions</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-2"></i>
+                            <span>Sampling campaigns</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-2"></i>
+                            <span>Street marketing</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="text-primary font-medium hover:underline">Learn more →</a>
+                </div>
+                
+                <!-- Service 6 -->
+                <div class="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition">
+                    <div class="bg-primary bg-opacity-10 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-lightbulb text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="font-heading text-xl font-bold mb-3">Custom Solutions</h3>
+                    <p class="mb-6">Tailored event concepts designed specifically for your unique requirements.</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-2"></i>
+                            <span>Concept development</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-2"></i>
+                            <span>Creative direction</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-2"></i>
+                            <span>End-to-end execution</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="text-primary font-medium hover:underline">Learn more →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-heading text-3xl md:text-4xl font-bold mb-4">Our Portfolio</h2>
+                <p class="text-lg max-w-2xl mx-auto">A curated selection of our most memorable events and activations.</p>
+            </div>
+            
+            <!-- Portfolio Filter -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <button class="portfolio-filter px-4 py-2 rounded-full bg-primary text-white" data-filter="all">All</button>
+                <button class="portfolio-filter px-4 py-2 rounded-full border border-secondary hover:bg-primary hover:text-white transition" data-filter="wedding">Weddings</button>
+                <button class="portfolio-filter px-4 py-2 rounded-full border border-secondary hover:bg-primary hover:text-white transition" data-filter="corporate">Corporate</button>
+                <button class="portfolio-filter px-4 py-2 rounded-full border border-secondary hover:bg-primary hover:text-white transition" data-filter="brand">Brand Activations</button>
+                <button class="portfolio-filter px-4 py-2 rounded-full border border-secondary hover:bg-primary hover:text-white transition" data-filter="social">Social Events</button>
+            </div>
+            
+            <!-- Portfolio Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Portfolio Item 1 -->
+                <div class="portfolio-item wedding" data-category="wedding">
+                    <div class="relative overflow-hidden rounded-lg h-80">
+                        <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Luxury wedding" class="w-full h-full object-cover">
+                        <div class="portfolio-overlay absolute inset-0 flex flex-col justify-end p-6 opacity-0">
+                            <h3 class="font-heading text-white text-2xl font-bold mb-2">Sophia & Michael's Wedding</h3>
+                            <p class="text-white mb-4">An elegant vineyard celebration with custom floral installations</p>
+                            <a href="#" class="text-white font-medium hover:underline self-start">View Details →</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Item 2 -->
+                <div class="portfolio-item corporate" data-category="corporate">
+                    <div class="relative overflow-hidden rounded-lg h-80">
+                        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Corporate conference" class="w-full h-full object-cover">
+                        <div class="portfolio-overlay absolute inset-0 flex flex-col justify-end p-6 opacity-0">
+                            <h3 class="font-heading text-white text-2xl font-bold mb-2">TechForward 2023</h3>
+                            <p class="text-white mb-4">Annual technology conference with interactive exhibits</p>
+                            <a href="#" class="text-white font-medium hover:underline self-start">View Details →</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Item 3 -->
+                <div class="portfolio-item brand" data-category="brand">
+                    <div class="relative overflow-hidden rounded-lg h-80">
+                        <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Brand activation" class="w-full h-full object-cover">
+                        <div class="portfolio-overlay absolute inset-0 flex flex-col justify-end p-6 opacity-0">
+                            <h3 class="font-heading text-white text-2xl font-bold mb-2">Natura Cosmetics Pop-Up</h3>
+                            <p class="text-white mb-4">Immersive brand experience in downtown shopping district</p>
+                            <a href="#" class="text-white font-medium hover:underline self-start">View Details →</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Item 4 -->
+                <div class="portfolio-item wedding" data-category="wedding">
+                    <div class="relative overflow-hidden rounded-lg h-80">
+                        <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Beach wedding" class="w-full h-full object-cover">
+                        <div class="portfolio-overlay absolute inset-0 flex flex-col justify-end p-6 opacity-0">
+                            <h3 class="font-heading text-white text-2xl font-bold mb-2">Isabella & James' Beach Wedding</h3>
+                            <p class="text-white mb-4">Sunset ceremony with barefoot luxury aesthetic</p>
+                            <a href="#" class="text-white font-medium hover:underline self-start">View Details →</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Item 5 -->
+                <div class="portfolio-item social" data-category="social">
+                    <div class="relative overflow-hidden rounded-lg h-80">
+                        <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" alt="Birthday party" class="w-full h-full object-cover">
+                        <div class="portfolio-overlay absolute inset-0 flex flex-col justify-end p-6 opacity-0">
+                            <h3 class="font-heading text-white text-2xl font-bold mb-2">50th Birthday Celebration</h3>
+                            <p class="text-white mb-4">Gatsby-themed party with live jazz band</p>
+                            <a href="#" class="text-white font-medium hover:underline self-start">View Details →</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Item 6 -->
+                <div class="portfolio-item corporate" data-category="corporate">
+                    <div class="relative overflow-hidden rounded-lg h-80">
+                        <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Product launch" class="w-full h-full object-cover">
+                        <div class="portfolio-overlay absolute inset-0 flex flex-col justify-end p-6 opacity-0">
+                            <h3 class="font-heading text-white text-2xl font-bold mb-2">Aurora Smartphone Launch</h3>
+                            <p class="text-white mb-4">High-tech reveal event with holographic displays</p>
+                            <a href="#" class="text-white font-medium hover:underline self-start">View Details →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="inline-flex items-center px-6 py-3 border border-secondary rounded-full text-lg font-medium hover:bg-primary hover:text-white hover:border-primary transition">
+                    View Full Portfolio
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-heading text-3xl md:text-4xl font-bold mb-4">Client Testimonials</h2>
+                <p class="text-lg max-w-2xl mx-auto">Hear what our clients say about working with LUXE.</p>
+            </div>
+            
+            <div class="testimonial-carousel relative">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Testimonial 1 -->
+                    <div class="testimonial-card bg-white p-8 rounded-lg">
+                        <div class="flex items-center mb-6">
+                            <div class="text-primary text-4xl mr-4">“</div>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-3 h-3 rounded-full bg-primary"></div>
+                                <div class="w-3 h-3 rounded-full bg-primary opacity-30"></div>
+                                <div class="w-3 h-3 rounded-full bg-primary opacity-30"></div>
+                            </div>
+                        </div>
+                        <p class="text-lg mb-6">"LUXE transformed our product launch into an unforgettable experience. Their attention to detail and creative vision exceeded all our expectations."</p>
+                        <div class="flex items-center">
+                            <img src="https://randomuser.me/api/portraits/women/43.jpg" alt="Sarah Johnson" class="w-12 h-12 rounded-full object-cover mr-4">
+                            <div>
+                                <h4 class="font-bold">Sarah Johnson</h4>
+                                <p class="text-sm text-gray-500">Marketing Director, TechNova</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 2 -->
+                    <div class="testimonial-card bg-white p-8 rounded-lg">
+                        <div class="flex items-center mb-6">
+                            <div class="text-primary text-4xl mr-4">“</div>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-3 h-3 rounded-full bg-primary opacity-30"></div>
+                                <div class="w-3 h-3 rounded-full bg-primary"></div>
+                                <div class="w-3 h-3 rounded-full bg-primary opacity-30"></div>
+                            </div>
+                        </div>
+                        <p class="text-lg mb-6">"Our wedding day was absolutely perfect thanks to LUXE. They handled every detail with care and professionalism, allowing us to simply enjoy our special day."</p>
+                        <div class="flex items-center">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Chen" class="w-12 h-12 rounded-full object-cover mr-4">
+                            <div>
+                                <h4 class="font-bold">Michael Chen</h4>
+                                <p class="text-sm text-gray-500">Wedding Client</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 3 -->
+                    <div class="testimonial-card bg-white p-8 rounded-lg">
+                        <div class="flex items-center mb-6">
+                            <div class="text-primary text-4xl mr-4">“</div>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-3 h-3 rounded-full bg-primary opacity-30"></div>
+                                <div class="w-3 h-3 rounded-full bg-primary opacity-30"></div>
+                                <div class="w-3 h-3 rounded-full bg-primary"></div>
+                            </div>
+                        </div>
+                        <p class="text-lg mb-6">"The brand activation campaign LUXE created for us generated record engagement and sales. Their team understands how to create meaningful consumer connections."</p>
+                        <div class="flex items-center">
+                            <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Elena Rodriguez" class="w-12 h-12 rounded-full object-cover mr-4">
+                            <div>
+                                <h4 class="font-bold">Elena Rodriguez</h4>
+                                <p class="text-sm text-gray-500">CEO, Belle Cosmetics</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex justify-center mt-12 space-x-4">
+                    <button class="testimonial-prev w-10 h-10 rounded-full border border-secondary flex items-center justify-center hover:bg-primary hover:text-white hover:border-primary transition">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="testimonial-next w-10 h-10 rounded-full border border-secondary flex items-center justify-center hover:bg-primary hover:text-white hover:border-primary transition">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-heading text-3xl md:text-4xl font-bold mb-4">Our Process</h2>
+                <p class="text-lg max-w-2xl mx-auto">A streamlined approach to creating exceptional events.</p>
+            </div>
+            
+            <div class="relative">
+                <div class="hidden lg:block absolute left-1/2 top-0 h-full w-0.5 bg-gray-200 transform -translate-x-1/2"></div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
+                    <!-- Step 1 -->
+                    <div class="lg:pr-24">
+                        <div class="flex items-center mb-6">
+                            <div class="flex-shrink-0 w-16 h-16 rounded-full bg-primary bg-opacity-10 flex items-center justify-center mr-6">
+                                <span class="font-heading text-primary text-2xl font-bold">1</span>
+                            </div>
+                            <h3 class="font-heading text-2xl font-bold">Discovery</h3>
+                        </div>
+                        <p class="pl-22">We begin with in-depth consultations to understand your vision, objectives, and requirements. This phase includes venue selection, budget planning, and concept development.</p>
+                    </div>
+                    
+                    <!-- Step 2 -->
+                    <div class="lg:pl-24 lg:col-start-2">
+                        <div class="flex items-center mb-6">
+                            <div class="flex-shrink-0 w-16 h-16 rounded-full bg-primary bg-opacity-10 flex items-center justify-center mr-6">
+                                <span class="font-heading text-primary text-2xl font-bold">2</span>
+                            </div>
+                            <h3 class="font-heading text-2xl font-bold">Design</h3>
+                        </div>
+                        <p class="pl-22">Our creative team develops custom designs, themes, and layouts tailored to your event. We present mood boards, 3D renderings, and detailed proposals for your approval.</p>
+                    </div>
+                    
+                    <!-- Step 3 -->
+                    <div class="lg:pr-24">
+                        <div class="flex items-center mb-6">
+                            <div class="flex-shrink-0 w-16 h-16 rounded-full bg-primary bg-opacity-10 flex items-center justify-center mr-6">
+                                <span class="font-heading text-primary text-2xl font-bold">3</span>
+                            </div>
+                            <h3 class="font-heading text-2xl font-bold">Coordination</h3>
+                        </div>
+                        <p class="pl-22">We handle all logistics including vendor management, contracts, permits, and scheduling. Our team ensures seamless coordination between all parties involved.</p>
+                    </div>
+                    
+                    <!-- Step 4 -->
+                    <div class="lg:pl-24 lg:col-start-2">
+                        <div class="flex items-center mb-6">
+                            <div class="flex-shrink-0 w-16 h-16 rounded-full bg-primary bg-opacity-10 flex items-center justify-center mr-6">
+                                <span class="font-heading text-primary text-2xl font-bold">4</span>
+                            </div>
+                            <h3 class="font-heading text-2xl font-bold">Execution</h3>
+                        </div>
+                        <p class="pl-22">On event day, our team manages every detail from setup to teardown. We oversee operations to ensure flawless execution of your vision.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-primary text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="font-heading text-3xl md:text-4xl font-bold mb-6">Ready to Create Something Extraordinary?</h2>
+            <p class="text-xl mb-10 max-w-3xl mx-auto">Let's discuss how we can bring your event vision to life with our premium planning and activation services.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#contact" class="bg-white text-primary px-8 py-3 rounded-full text-lg font-medium hover:bg-opacity-90 transition">Get in Touch</a>
+                <a href="tel:+1234567890" class="bg-transparent border-2 border-white px-8 py-3 rounded-full text-lg font-medium hover:bg-white hover:bg-opacity-10 transition">
+                    <i class="fas fa-phone mr-2"></i>
+                    Call Now
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-16">
+                <div class="mb-12 lg:mb-0">
+                    <h2 class="font-heading text-3xl md:text-4xl font-bold mb-6">Contact Us</h2>
+                    <p class="text-lg mb-8">Have questions about our services or ready to start planning your event? Reach out to our team—we'd love to hear from you.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="bg-primary bg-opacity-10 p-3 rounded-full mr-4">
+                                <i class="fas fa-map-marker-alt text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">Our Office</h4>
+                                <p>123 Event Avenue, Suite 400<br>New York, NY 10001</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-primary bg-opacity-10 p-3 rounded-full mr-4">
+                                <i class="fas fa-envelope text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">Email Us</h4>
+                                <p>info@luxeagency.com<br>bookings@luxeagency.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-primary bg-opacity-10 p-3 rounded-full mr-4">
+                                <i class="fas fa-phone text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">Call Us</h4>
+                                <p>+1 (555) 123-4567<br>Mon-Fri, 9am-6pm EST</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-10">
+                        <h4 class="font-bold mb-4">Follow Us</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-primary hover:text-white transition">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-primary hover:text-white transition">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-primary hover:text-white transition">
+                                <i class="fab fa-pinterest-p"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-primary hover:text-white transition">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-8 rounded-lg shadow-sm">
+                    <h3 class="font-heading text-2xl font-bold mb-6">Send Us a Message</h3>
+                    <form id="contact-form">
+                        <div class="grid grid-cols-1 gap-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium mb-1">Full Name</label>
+                                <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary" required>
+                            </div>
+                            
+                            <div>
+                                <label for="email" class="block text-sm font-medium mb-1">Email Address</label>
+                                <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary" required>
+                            </div>
+                            
+                            <div>
+                                <label for="phone" class="block text-sm font-medium mb-1">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary">
+                            </div>
+                            
+                            <div>
+                                <label for="event-type" class="block text-sm font-medium mb-1">Event Type</label>
+                                <select id="event-type" name="event-type" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary">
+                                    <option value="">Select an option</option>
+                                    <option value="wedding">Wedding</option>
+                                    <option value="corporate">Corporate Event</option>
+                                    <option value="brand">Brand Activation</option>
+                                    <option value="social">Social Event</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label for="message" class="block text-sm font-medium mb-1">Your Message</label>
+                                <textarea id="message" name="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary"></textarea>
+                            </div>
+                            
+                            <div>
+                                <button type="submit" class="w-full bg-primary hover:bg-opacity-90 text-white px-6 py-3 rounded-lg text-lg font-medium transition">
+                                    Send Message
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-secondary text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="font-heading text-xl font-bold mb-4">LUXE</h3>
+                    <p class="mb-4">Premium event planning and brand activation agency creating unforgettable experiences.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="hover:text-primary transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="hover:text-primary transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="hover:text-primary transition">
+                            <i class="fab fa-pinterest-p"></i>
+                        </a>
+                        <a href="#" class="hover:text-primary transition">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-4">Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-primary transition">Wedding Planning</a></li>
+                        <li><a href="#" class="hover:text-primary transition">Corporate Events</a></li>
+                        <li><a href="#" class="hover:text-primary transition">Brand Activations</a></li>
+                        <li><a href="#" class="hover:text-primary transition">Social Events</a></li>
+                        <li><a href="#" class="hover:text-primary transition">Promotional Campaigns</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="hover:text-primary transition">Home</a></li>
+                        <li><a href="#services" class="hover:text-primary transition">Services</a></li>
+                        <li><a href="#portfolio" class="hover:text-primary transition">Portfolio</a></li>
+                        <li><a href="#testimonials" class="hover:text-primary transition">Testimonials</a></li>
+                        <li><a href="#contact" class="hover:text-primary transition">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-4">Newsletter</h4>
+                    <p class="mb-4">Subscribe to receive updates on our latest projects and event tips.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Your email" class="px-4 py-2 rounded-l-lg text-gray-900 w-full">
+                        <button type="submit" class="bg-primary hover:bg-opacity-90 px-4 py-2 rounded-r-lg">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center">
+                <p>&copy; 2023 LUXE Event & Brand Activation Agency. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    mobileMenu.classList.add('hidden');
+                    
+                    // Scroll to target
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Portfolio filtering
+        const filterButtons = document.querySelectorAll('.portfolio-filter');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Update active button
+                filterButtons.forEach(btn => {
+                    btn.classList.remove('bg-primary', 'text-white');
+                    btn.classList.add('border', 'border-secondary', 'hover:bg-primary', 'hover:text-white');
+                });
+                
+                button.classList.add('bg-primary', 'text-white');
+                button.classList.remove('border', 'hover:bg-primary', 'hover:text-white');
+                
+                // Filter items
+                const filter = button.getAttribute('data-filter');
+                
+                portfolioItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Testimonial carousel
+        let currentTestimonial = 0;
+        const testimonials = document.querySelectorAll('.testimonial-card');
+        
+        function showTestimonial(index) {
+            testimonials.forEach((testimonial, i) => {
+                if (i === index) {
+                    testimonial.style.display = 'block';
+                } else {
+                    testimonial.style.display = 'none';
+                }
+            });
+        }
+        
+        document.querySelector('.testimonial-prev').addEventListener('click', () => {
+            currentTestimonial = (currentTestimonial - 1 + testimonials.length) % testimonials.length;
+            showTestimonial(currentTestimonial);
+        });
+        
+        document.querySelector('.testimonial-next').addEventListener('click', () => {
+            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+            showTestimonial(currentTestimonial);
+        });
+        
+        // Initially show first testimonial on mobile
+        if (window.innerWidth < 768) {
+            showTestimonial(0);
+        }
+        
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 768) {
+                testimonials.forEach(testimonial => {
+                    testimonial.style.display = 'block';
+                });
+            } else {
+                showTestimonial(currentTestimonial);
+            }
+        });
+
+        // Form submission
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Here you would typically send the form data to your server
+            // For this example, we'll just show an alert
+            alert('Thank you for your message! We will get back to you soon.');
+            this.reset();
+        });
+
+        // Scroll animation
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.animate-fade-in, .animate-slide-up');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementPosition < windowHeight - 100) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+        
+        // Initial check
+        animateOnScroll();
+        
+        // Check on scroll
+        window.addEventListener('scroll', animateOnScroll);
+    </script>
+</body>
+</html>
